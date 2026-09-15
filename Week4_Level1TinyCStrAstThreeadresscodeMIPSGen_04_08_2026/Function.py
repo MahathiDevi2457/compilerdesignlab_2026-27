@@ -79,7 +79,11 @@ class Function:
         for the required call order: parse -> program.generateTripleTAC()
         -> program.compile().)
         """
-        raise NotImplementedError("implement Function.compile()")
+        self.localSymbolTable.assignOffsetsToSymbols()
+        mips_gen = MIPSGenerator(self.localSymbolTable)
+        frame_size = self.localSymbolTable.size()
+        self.mipsCode = mips_gen.generate(self.tripleTACstmts.triples, frame_size)
+        #raise NotImplementedError("implement Function.compile()")
 
     def getMipsCode(self):
         """NEW this week. Returns None if compile() hasn't run yet."""

@@ -107,7 +107,7 @@ def main(argv=None):
     parser = build_arg_parser()
     args = parser.parse_args(argv)
 
-    args.compile = True  # default value -- see Week 2/3's main.py for rationale
+    #args.compile = True  # default value -- see Week 2/3's main.py for rationale
 
     if args.tokens:
         with open(args.file + ".toks", "w") as f:
